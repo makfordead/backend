@@ -51,4 +51,10 @@ public class AgentController {
      agentRepository.deleteById(id);
     }
 
+    @GetMapping("/getAllAgents")
+    public List<Agent> getAgent()
+    {
+        return agentRepository.findAll();
+
+    }
 }
