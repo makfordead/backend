@@ -12,23 +12,16 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/agents")
+@RequestMapping("/agents")
 @CrossOrigin
 public class AgentController {
     @Autowired
     AgentRepository agentRepository;
     @CrossOrigin
-    @PostMapping("/CreateAgent")
+    @PostMapping()
     public Agent create(@RequestBody Agent agent)
     {
         agentRepository.save(agent);
-        System.out.println("____");
-        System.out.println("GETTING AGENT");
-        List<Agent> list =agentRepository.findAll();
-        for (Agent temp : list
-        ) {
-            System.out.println(temp);
-        }
         return agent;
 
     }
@@ -51,10 +44,11 @@ public class AgentController {
      agentRepository.deleteById(id);
     }
 
-    @GetMapping("/getAllAgents")
-    public List<Agent> getAgent()
+    @GetMapping()
+    public List<Agent> getAgent(@RequestParam String _end,@RequestParam String _start)
     {
-        return agentRepository.findAll();
 
+return  agentRepository.findAll();
     }
+
 }
