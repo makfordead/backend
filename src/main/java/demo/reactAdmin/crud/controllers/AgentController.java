@@ -27,6 +27,7 @@ public class AgentController {
         return agent;
 
     }
+    @CrossOrigin
     @PutMapping()
     public Agent update(@RequestBody Agent agent)
     {
@@ -34,18 +35,19 @@ public class AgentController {
         return agentRepository.save(agent);
 
     }
+    @CrossOrigin
     @GetMapping("/{id}")
     public Agent getAgent(@PathVariable int id)
     {
        return agentRepository.findById(id).orElseThrow();
     }
-
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public void deleteAgent(@PathVariable int id)
     {
      agentRepository.deleteById(id);
     }
-
+    @CrossOrigin
     @GetMapping()
     public List<Agent> getAgent(@RequestParam String _end,@RequestParam String _start)
     {
@@ -62,7 +64,7 @@ public class AgentController {
             }
             catch (Exception e)
             {
-                
+
             }
             }
 return  list;
