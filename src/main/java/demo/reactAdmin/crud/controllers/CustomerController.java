@@ -10,7 +10,7 @@ import springboot.rest.services.FilterService;
 import springboot.rest.utils.QueryParamExtractor;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -43,11 +43,11 @@ public class CustomerController {
         return repo.findById(id).orElseThrow();
     }
 
-    @RequestMapping(value = "customers", method = RequestMethod.GET)
+    @GetMapping()
     public Iterable<Customer> filterBy(
             @RequestParam(required = false, name = "filter") String filterStr,
             @RequestParam(required = false, name = "range") String rangeStr, @RequestParam(required = false, name="sort") String sortStr) {
-        QueryParamWrapper wrapper = QueryParamExtractor.extract(filterStr, rangeStr, sortStr);
-        return filterService.filterBy(wrapper, repo);
+            QueryParamWrapper wrapper = QueryParamExtractor.extract(filterStr, rangeStr, sortStr);
+            return filterService.filterBy(wrapper, repo);
     }
 }

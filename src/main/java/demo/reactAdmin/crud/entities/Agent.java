@@ -12,7 +12,7 @@ import java.util.List;
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer Id;
+    public Integer id;
     @Column
     public String Name;
     @Column
@@ -37,11 +37,11 @@ public class Agent {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {
@@ -79,7 +79,7 @@ public class Agent {
     @Override
     public String toString() {
         return "Agent{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", Name='" + Name + '\'' +
                 ", Description='" + Description + '\'' +
                 ", Status=" + Status +

@@ -9,7 +9,7 @@ public class PropertyType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PROPERTYTYPE_ID")
-    public Integer Id;
+    public Integer id;
     @Column
     public String Name;
     @Column
@@ -25,11 +25,11 @@ public class PropertyType {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {

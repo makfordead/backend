@@ -10,17 +10,17 @@ public class Property {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PROPERTY_ID")
-    Integer Id;
+    Integer id;
 
     @Column
     String Value;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    //@Cascade(org.hibernate.annotations.CascadeType.ALL)
     PropertyType propertyType;
 
-    @ManyToOne
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
+    //@Cascade(org.hibernate.annotations.CascadeType.ALL)
     Agent agent;
 
     public Agent getAgent() {
@@ -32,11 +32,11 @@ public class Property {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        id = id;
     }
 
     public String getValue() {
