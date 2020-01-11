@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/property")
 public class PropertyAndAgent {
     @Autowired
@@ -24,7 +25,7 @@ public class PropertyAndAgent {
     PropertyTypeRepository propertyTypeRepository;
     @Autowired
     PropertyRepository propertyRepository;
-
+    @CrossOrigin
     @PostMapping()
     public Property createPropertyForAgent(@RequestBody Map<String,String> map) {
         Integer id = Integer.parseInt(map.get("agentId"));
@@ -34,6 +35,7 @@ public class PropertyAndAgent {
         Property property = new Property();
         property.setValue(map.get("value"));
         property.setAgent(agent);
+        System.out.println(agent);
         property.setPropertyType(propertyType);
         propertyRepository.save(property);
         return property;

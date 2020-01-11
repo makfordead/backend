@@ -119,19 +119,24 @@ public class AgentController {
         if(id==null){
         Integer starting_index = Integer.parseInt(_start);
         Integer ending_index = Integer.parseInt(_end);
-        for (int i = starting_index; i <=ending_index; i++) {
-            try {
-
-
-                Agent temp = agentRepository.findById(i).get();
-                if (temp.getId() != null)
-                    list.add(temp);
+        Iterable<Agent> iterable = agentRepository.findAll();
+            for (Agent agent:iterable
+                 ) {
+                list.add(agent);
             }
-            catch (Exception e)
-            {
-
-            }
-            }
+//        for (int i = starting_index; i <=ending_index; i++) {
+//            try {
+//
+//
+//                Agent temp = agentRepository.findById(i).get();
+//                if (temp.getId() != null)
+//                    list.add(temp);
+//            }
+//            catch (Exception e)
+//            {
+//
+//            }
+//            }
         String json = new Gson().toJson(list );
             httpHeaders.set("X-Total-Count",""+list.size());
         return ResponseEntity.ok()
@@ -139,8 +144,8 @@ public class AgentController {
                 .body(json);
     }
         else {
-            Agent[] arr = new Agent[id.size()];
-            for (int i = 0; i < id.size(); i++) {
+            Agent[] arr = new Agent[list.size()];
+            for (int i = 0; i < list.size(); i++) {
                 arr[i]= agentRepository.findById(id.get(i)).get();
             }
 
